@@ -69,6 +69,13 @@ public class Student implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", day=" + day + "]";
+	}
 	
 	
 	
