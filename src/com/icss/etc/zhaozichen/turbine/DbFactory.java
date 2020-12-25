@@ -10,10 +10,14 @@ public class DbFactory {
 	public static void main(String[] args) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
 		Student student =new Student();
-		
+		student.setId("12");
 		student.setName("12312");
+		System.out.println("生成的sql>>：" +BeanUtil.getStudentBeanColsSql(student, "insert"));
+		System.out.println("生成的sql>>：" +BeanUtil.getStudentBeanColsSql(new Student(), "select"));
+		System.out.println("生成的sql>>：" +BeanUtil.getStudentBeanColsSql(student, "update"));
+		System.out.println("生成的sql>>：" +BeanUtil.getStudentBeanColsSql(student, "delete"));
 		
-		System.out.println("生成的sql>>：" + BeanUtil.getStudentBeanCols(student, "insert"));
+		
 	}
 	
 }

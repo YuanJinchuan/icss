@@ -3,12 +3,13 @@ package com.icss.etc.zhaozichen.pojo;
 import java.io.Serializable;
 
 import com.icss.etc.zhaozichen.turbine.Col;
+import com.icss.etc.zhaozichen.turbine.Key;
 import com.icss.etc.zhaozichen.turbine.Table;
 import com.sun.org.glassfish.external.arc.Taxonomy;
 //这里实现Serializable接口 考虑以后可能用scoket直接传输实体 
 @Table("Student")
 public class Student implements Serializable{
-	
+	@Key("ID")
 	@Col("ID")
 	private String id;
 	
