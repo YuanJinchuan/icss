@@ -10,8 +10,9 @@ import com.icss.etc.zhaozichen.pojo.Student;
 public class BeanUtil {
 
 	/**
-	 * 注解解析
+	 * 注解解析 未使用
 	 */
+	@Deprecated
 	public static <T> T getBean(Class<T> clazz) {
 		T obj = null;
 		try {
