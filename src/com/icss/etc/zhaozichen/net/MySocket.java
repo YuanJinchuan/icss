@@ -18,26 +18,33 @@ public class MySocket implements Runnable {
      }  
 
      public void run() {  
-    	 ObjectInputStream input;  
-    	 ObjectOutputStream output;  
+    	 ObjectInputStream input=null;  
+    	 ObjectOutputStream output=null;  
          try {  
              input = new ObjectInputStream(client.getInputStream());  
              output = new ObjectOutputStream(client.getOutputStream()); 
-             Object getMsg =null;
-             try {
-				while((getMsg = input.readObject())!=null) {
-					 System.out.println("收到:   " + getMsg); 
-					 UserController controller=new UserController();
-				     output.writeObject(controller.service(getMsg));;
-				 }
+             Object getMsg =input.readObject();
+			 System.out.println("收到:   " + getMsg); 
+			 UserController controller=new UserController();
+			 output.writeObject(controller.service(getMsg));;
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				try {
+					client.close();
+					input.close();
+					output.close();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
               
-         } catch (IOException e) {  
-             e.printStackTrace();  
-         }  
+
      }  
  }
 
