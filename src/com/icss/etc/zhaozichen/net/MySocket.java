@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import com.icss.etc.zhaozichen.pojo.Student;
+
 public class MySocket implements Runnable {
 	
 	
@@ -22,11 +24,8 @@ public class MySocket implements Runnable {
              input = new DataInputStream(client.getInputStream());  
              output = new DataOutputStream(client.getOutputStream());  
              String listMsg = input.readUTF();  
-             output.writeUTF("Recive:  " + listMsg + "    \r\n Thx...");  
-             System.out.println("Recive:   " + listMsg);  
-             listMsg = input.readUTF();  
-             output.writeUTF("Recive Second:  " + listMsg + "    \r\n Thx...");  
-             System.out.println("Recive Second:   " + listMsg);  
+             System.out.println("收到:   " + listMsg);  
+             output.writeUTF(new Student().toString()); 
          } catch (IOException e) {  
              e.printStackTrace();  
          }  
