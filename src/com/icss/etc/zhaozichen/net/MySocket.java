@@ -34,7 +34,7 @@ public class MySocket implements Runnable {
 				e.printStackTrace();
 			}finally {
 				try {
-					client.close();
+					//client.close();
 					input.close();
 					output.close();
 				} catch (Exception e) {

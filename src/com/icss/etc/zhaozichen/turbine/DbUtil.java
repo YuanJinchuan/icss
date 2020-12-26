@@ -32,6 +32,7 @@ public class DbUtil<T> {
 			connection = DriverManager.getConnection(url, user, password);// jdbc 连接上mysql服务器上的test数据库了
 			// 3.开启sql称述，（Statement，PreparedStatement（？占位符形式）），执行sql语句
 			stmt = connection.createStatement();
+			System.out.println("执行的sql为"+sql);
 			stmt.execute(sql);
 			ResultSet rs=  stmt.getResultSet();
 			
@@ -98,6 +99,7 @@ public class DbUtil<T> {
 			connection = DriverManager.getConnection(url, user, password);// jdbc 连接上mysql服务器上的test数据库了
 			// 3.开启sql称述，（Statement，PreparedStatement（？占位符形式）），执行sql语句
 			stmt = connection.createStatement();
+			System.out.println("执行的sql为"+sql);
 			stmt.execute(sql);
 			//ResultSet set=  stmt.getResultSet();
 	

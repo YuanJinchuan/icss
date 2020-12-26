@@ -9,6 +9,11 @@ import com.icss.etc.zhaozichen.turbine.Table;
 //这里实现Serializable接口 考虑以后可能用scoket直接传输实体 
 @Table("Student")
 public class Student implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Key("ID")
 	@Col("ID")
 	private String id;
@@ -25,6 +30,23 @@ public class Student implements Serializable{
 	
 	
 	private String type;
+	
+	
+	
+	
+    public Student() {
+		super();
+	}
+
+
+
+	public Student(String id, String type, String name, String age, String day) {
+        this.id = id;
+        this.type = type;
+        this.name = name;
+        this.age = age;
+        this.day = day;
+    }
 
 
 
