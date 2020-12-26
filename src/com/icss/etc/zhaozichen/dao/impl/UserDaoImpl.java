@@ -12,9 +12,13 @@ import com.icss.etc.zhaozichen.turbine.DbUtil;
 public class UserDaoImpl implements UserDao {
 
 	@Override
-	public boolean insertUser(Student student) {
-		
-		return false;
+	public void insertUser(Student student) {
+		DbUtil<Student> dbUtil=new DbUtil<>();
+		try {
+			dbUtil.excuteUpdate(BeanUtil.getStudentBeanColsSql(student, "insert"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -23,12 +27,33 @@ public class UserDaoImpl implements UserDao {
 		DbUtil<Student> dbUtil=new DbUtil<>();
 		try {
 			list=dbUtil.excuteSelect(BeanUtil.getStudentBeanColsSql(student, "select"), student);
-		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return list;
+	}
+
+	@Override
+	public void updateUser(Student student) {
+		DbUtil<Student> dbUtil=new DbUtil<>();
+		try {
+			dbUtil.excuteUpdate(BeanUtil.getStudentBeanColsSql(student, "update"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void deleteUser(Student student) {
+		DbUtil<Student> dbUtil=new DbUtil<>();
+		try {
+			dbUtil.excuteUpdate(BeanUtil.getStudentBeanColsSql(student, "delete"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 

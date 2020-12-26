@@ -43,6 +43,7 @@ public class DbUtil<T> {
     						field.setAccessible(true);
     					}
     					Col col = field.getAnnotation(Col.class);
+    					//调用set方法添加参数
     					Method m = clazz.getDeclaredMethod(convertToSetMethod(field.getName()),String.class);
     					m.invoke(studentone,rs.getString(col.value()));
     					

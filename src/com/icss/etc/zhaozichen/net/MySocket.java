@@ -1,11 +1,11 @@
 package com.icss.etc.zhaozichen.net;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import com.icss.etc.zhaozichen.pojo.Student;
+import com.icss.etc.zhaozichen.controller.UserController;
 
 public class MySocket implements Runnable {
 	
@@ -18,14 +18,23 @@ public class MySocket implements Runnable {
      }  
 
      public void run() {  
-         DataInputStream input;  
-         DataOutputStream output;  
+    	 ObjectInputStream input;  
+    	 ObjectOutputStream output;  
          try {  
-             input = new DataInputStream(client.getInputStream());  
-             output = new DataOutputStream(client.getOutputStream());  
-             String listMsg = input.readUTF();  
-             System.out.println("收到:   " + listMsg);  
-             output.writeUTF(new Student().toString()); 
+             input = new ObjectInputStream(client.getInputStream());  
+             output = new ObjectOutputStream(client.getOutputStream()); 
+             Object getMsg =null;
+             try {
+				while((getMsg = input.readObject())!=null) {
+					 System.out.println("收到:   " + getMsg); 
+					 UserController controller=new UserController();
+				     output.writeObject(controller.service(getMsg));;
+				 }
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+
+              
          } catch (IOException e) {  
              e.printStackTrace();  
          }  

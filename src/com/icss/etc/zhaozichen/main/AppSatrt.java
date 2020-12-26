@@ -18,7 +18,6 @@ public class AppSatrt {
 		TalkServer server=new TalkServer();
 		//开启监听
 		server.doListen();
-		System.out.println("=======服务器开启监听=======");
 	}
 
 }
