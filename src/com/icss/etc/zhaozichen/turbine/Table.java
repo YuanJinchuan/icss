@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义注解
+ * 自定义注解 用于获取表明
  * */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
