@@ -13,10 +13,7 @@ public class AppSatrt {
 	public static void main(String[] args) {
 		
 		
-		UserController u=BeanUtil.getBean(UserController.class);
-		Student student=new Student();
-		
-		System.out.println(u.addUser(student));
+
 		
 	}
 
